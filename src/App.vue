@@ -2,10 +2,7 @@
   <div id="app" class="container">
     <h1>Todo App</h1>
     <todo-input @onTodoAdd="addTodo"></todo-input>
-    <todo-list
-      v-if="isTodoItems"
-      :tasks="todoItems">
-    </todo-list>
+    <todo-list v-if="isTodoItems"></todo-list>
     <div v-else>
       <h3>Plase, add new todo!</h3>
     </div>
@@ -16,6 +13,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import BootstrapVue from 'bootstrap-vue';
+import { mapGetters } from 'vuex';
 import TodoInput from './components/TodoInput.vue';
 import TodoList from './components/TodoList.vue';
 
@@ -30,21 +28,10 @@ export default {
     TodoInput,
     TodoList
   },
-  data() {
-    return {
-      todoItems: [
-        { id: 1, name: 'Buy bread', completed: false },
-        { id: 2, name: 'Go to meet with the friends', completed: true },
-        { id: 3, name: 'Make some trainings', completed: true },
-        { id: 4, name: 'Create new pet project', completed: false },
-        { id: 5, name: 'Go to bed', completed: false }
-      ]
-    };
-  },
   computed: {
-    isTodoItems() {
-      return this.todoItems.length !== 0;
-    }
+    ...mapGetters({
+      isTodoItems: 'isEmptyTodos'
+    })
   },
   methods: {
     addTodo(name) {
@@ -53,8 +40,11 @@ export default {
         name,
         completed: false
       };
-      this.todoItems.push(todo);
+      this.$store.commit('ADD_TODO', todo);
     },
+  },
+  mounted() {
+    this.$store.dispatch('fetchTodos');
   }
 }
 </script>

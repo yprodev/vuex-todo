@@ -3,13 +3,13 @@
     <common-item
       v-for="task in tasks"
       :key="task.id"
-      :id="task.id"
       :task="task">
     </common-item>
   </b-list-group>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import CommonItem from '../common/CommonItem.vue';
 
 export default {
@@ -17,12 +17,10 @@ export default {
   components: {
     CommonItem
   },
-  props: {
-    tasks: {
-      required: true,
-      type: Array,
-      default: () => ([])
-    }
+  computed: {
+    ...mapGetters({
+      tasks: 'getAllTodos'
+    })
   }
 }
 </script>

@@ -5,13 +5,15 @@
       type="button"
       class="close"
       aria-label="Close"
-      @click="onToggle">
+      @click="onToggle(task)">
       <span aria-hidden="true">&times;</span>
     </button>
   </b-list-group-item>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'CommonItem',
   props: {
@@ -20,21 +22,17 @@ export default {
       default: () => ({})
     }
   },
-  data() {
-    return {
-
-    };
-  },
   computed: {
     completedTodo() {
       return this.task.completed ? 'success' : null;
     }
   },
   methods: {
-    onToggle() {
-      this.task.completed = !this.task.completed;
-    }
+    ...mapMutations({
+      onToggle: 'UPDATE_STATUS'
+    })
   }
+
 }
 </script>
 

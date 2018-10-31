@@ -29,7 +29,6 @@ export default {
     onAdd() {
       if (this.isDisabled()) return;
       this.$emit('onTodoAdd', this.itemValue);
-      console.log('Adding item...');
       this.clearInput();
     },
     isDisabled() {

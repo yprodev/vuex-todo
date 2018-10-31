@@ -1,23 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import state from './state';
+import mutations from './mutations';
+import getters from './getters';
+import actions from './actions';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    todos: [],
-    newTodo: ''
-  },
-  mutations: {
-
-  },
-  actions: {
-
-  },
-  getters: {
-    newTodo: state => state.newTodo,
-    todos: state => state.todos.filter((todo) => !todo.completed),
-    completedTodos: state => state.todos.filter((todo) => todo.completed)
-
-  }
+  strict: true,
+  state,
+  mutations,
+  actions,
+  getters
 });
