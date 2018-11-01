@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     completedTodo() {
-      return this.task.completed ? 'success' : null;
+      return this.task.completed ? 'success' : 'danger';
     }
   },
   methods: {
