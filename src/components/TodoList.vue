@@ -1,11 +1,14 @@
 <template>
-  <b-list-group>
+  <b-list-group v-if="isTodoItems">
     <common-item
       v-for="task in tasks"
       :key="task.id"
       :task="task">
     </common-item>
   </b-list-group>
+  <div v-else>
+    <h3>Plase, add new todo!</h3>
+  </div>
 </template>
 
 <script>
@@ -19,7 +22,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      tasks: 'getAllTodos'
+      tasks: 'getAllTodos',
+      isTodoItems: 'isEmptyTodos'
     })
   }
 }

@@ -2,36 +2,23 @@
   <div id="app" class="container">
     <h1>Todo App</h1>
     <todo-input @onTodoAdd="addTodo"></todo-input>
-    <todo-list v-if="isTodoItems"></todo-list>
-    <div v-else>
-      <h3>Plase, add new todo!</h3>
-    </div>
+    <todo-list></todo-list>
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
 import Vuex from 'vuex';
-import BootstrapVue from 'bootstrap-vue';
 import { mapGetters } from 'vuex';
 import TodoInput from './components/TodoInput.vue';
 import TodoList from './components/TodoList.vue';
 
-Vue.use(BootstrapVue);
-
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 export default {
   name: 'app',
   components: {
     TodoInput,
     TodoList
-  },
-  computed: {
-    ...mapGetters({
-      isTodoItems: 'isEmptyTodos'
-    })
   },
   methods: {
     addTodo(name) {
@@ -41,7 +28,7 @@ export default {
         completed: false
       };
       this.$store.commit('ADD_TODO', todo);
-    },
+    }
   },
   mounted() {
     this.$store.dispatch('fetchTodos');
