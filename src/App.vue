@@ -1,9 +1,9 @@
 <template>
-  <div id="app" class="container">
+  <b-container id="app">
     <h1>Todo App</h1>
-    <todo-input @onTodoAdd="addTodo"></todo-input>
+    <todo-input @onTodoAdd="addTodo" class=".todo-input-comp"></todo-input>
     <todo-list></todo-list>
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -43,5 +43,9 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.todo-input-comp {
+  margin-bottom: 40px;
 }
 </style>

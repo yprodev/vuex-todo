@@ -1,12 +1,16 @@
 <template>
   <div class="container todo-input">
-    <b-form-input
-      type="text"
-      class="form-control"
-      placeholder="Type the name of the next task..."
-      v-model="itemValue"
-      @keyup.enter.native="onAdd">
-    </b-form-input>
+    <b-form-group
+      id="fieldset1"
+      description="Let us keep your task in our storage."
+      label="Enter your TODO name"
+      label-for="input1">
+      <b-form-input
+        id="input1"
+        v-model.trim="itemValue"
+        @keyup.enter.native="onAdd">
+      </b-form-input>
+    </b-form-group>
     <b-button
       class="btn btn-primary"
       variant="primary"
