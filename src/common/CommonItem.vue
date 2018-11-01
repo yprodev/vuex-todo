@@ -28,10 +28,10 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'UPDATE_STATUS'
+      'UPDATE_TODO_STATUS'
     ]),
     onToggle(task) {
-      this.UPDATE_STATUS(task);
+      this.UPDATE_TODO_STATUS(task);
     }
   }
 }

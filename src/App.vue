@@ -29,7 +29,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('fetchTodos');
+    this.$store.dispatch('getTodos');
   }
 }
 </script>
