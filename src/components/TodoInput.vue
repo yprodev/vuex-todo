@@ -23,11 +23,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      itemValue: ''
-    };
-  },
+  data: () => ({
+    itemValue: ''
+  }),
   methods: {
     onAdd() {
       if (this.isDisabled()) return;
