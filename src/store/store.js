@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   strict: true,
   state: {
-    todoItems: [],
+    todoItems: []
   },
   mutations: {
     SET_TODOS: (state, todos) => {
@@ -18,6 +18,14 @@ export default new Vuex.Store({
     REMOVE_TODO: (state, todoId) => {
       const todoIndex = state.todoItems.findIndex(item => item.id === todoId);
       state.todoItems.splice(todoIndex, 1);
+    },
+    UPDATE_TODO: (state, todoItem) => {
+      const predicate = item => item.id === todoItem.id;
+      const todoIndex = state.todoItems.findIndex(predicate);
+      const foundTodo = state.todoItems.find(predicate);
+
+      foundTodo.name = todoItem.name;
+      state.todoItems.splice(todoIndex, 1, foundTodo);
     },
     UPDATE_TODO_STATUS: (state, task) => {
       const todoIndex = state.todoItems.findIndex(item => item.id === task.id);

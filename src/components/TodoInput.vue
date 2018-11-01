@@ -16,16 +16,23 @@
       variant="primary"
       @click="onAdd"
       :disabled="isDisabled()">
-      Add Item
+      Add New Item
     </b-button>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data: () => ({
     itemValue: ''
   }),
+  computed: {
+    ...mapGetters([
+      'todoOnEdit'
+    ])
+  },
   methods: {
     onAdd() {
       if (this.isDisabled()) return;
