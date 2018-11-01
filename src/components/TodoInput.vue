@@ -40,7 +40,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .todo-input {
     margin-bottom: 40px;
   }
