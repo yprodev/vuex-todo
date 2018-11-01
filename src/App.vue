@@ -8,8 +8,7 @@
 
 <script>
 import Vue from 'vue';
-import Vuex from 'vuex';
-import { mapGetters } from 'vuex';
+import Vuex, { mapMutations, mapActions } from 'vuex';
 import TodoInput from './components/TodoInput.vue';
 import TodoList from './components/TodoList.vue';
 
@@ -19,17 +18,23 @@ export default {
     TodoList
   },
   methods: {
+    ...mapMutations([
+      'ADD_TODO'
+    ]),
+    ...mapActions([
+      'getTodos'
+    ]),
     addTodo(name) {
       const todo = {
         id: new Date().getTime(),
         name,
         completed: false
       };
-      this.$store.commit('ADD_TODO', todo);
+      this.ADD_TODO(todo);
     }
   },
   mounted() {
-    this.$store.dispatch('getTodos');
+    this.getTodos();
   }
 }
 </script>
