@@ -13,9 +13,7 @@ import { mapGetters } from 'vuex';
 import TodoInput from './components/TodoInput.vue';
 import TodoList from './components/TodoList.vue';
 
-
 export default {
-  name: 'app',
   components: {
     TodoInput,
     TodoList

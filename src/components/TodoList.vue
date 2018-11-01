@@ -16,7 +16,6 @@ import { mapGetters } from 'vuex';
 import CommonItem from '../common/CommonItem.vue';
 
 export default {
-  name: 'TodoList',
   components: {
     CommonItem
   },
