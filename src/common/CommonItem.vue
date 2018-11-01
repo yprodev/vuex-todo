@@ -1,12 +1,12 @@
 <template>
-  <b-list-group-item href="#" :variant="completedTodo">
+  <b-list-group-item :variant="completedTodo">
     {{ task.name }}
     <button
       type="button"
       class="close"
       aria-label="Close"
       @click="onToggle(task)">
-      <span aria-hidden="true">&times;</span>
+      <span aria-hidden="true">Done</span>
     </button>
   </b-list-group-item>
 </template>
