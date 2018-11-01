@@ -3,7 +3,7 @@
     <common-item
       v-for="todo in todos"
       :key="todo.id"
-      :task="todo">
+      :todo="todo">
     </common-item>
   </b-list-group>
   <div v-else>

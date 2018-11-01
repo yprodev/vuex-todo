@@ -1,38 +1,39 @@
 <template>
   <b-list-group-item :variant="completedTodo">
-    {{ task.name }}
+    {{ todo.name }}
     <button
       type="button"
       class="close"
       aria-label="Close"
-      @click="onToggle(task)">
+      @click="onToggle(todo)">
       <span aria-hidden="true">Done</span>
     </button>
   </b-list-group-item>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapMutations } from 'vuex';
 
 export default {
-  name: 'CommonItem',
   props: {
-    task: {
+    todo: {
       type: Object,
-      default: () => ({})
+      default: () => {}
     }
   },
   computed: {
     completedTodo() {
-      return this.task.completed ? 'success' : 'danger';
+      return this.todo.completed ? 'success' : 'danger';
     }
   },
   methods: {
-    ...mapMutations({
-      onToggle: 'UPDATE_STATUS'
-    })
+    ...mapMutations([
+      'UPDATE_STATUS'
+    ]),
+    onToggle(task) {
+      this.UPDATE_STATUS(task);
+    }
   }
-
 }
 </script>
 
