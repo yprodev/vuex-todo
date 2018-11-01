@@ -1,13 +1,24 @@
 <template>
   <b-list-group-item :variant="completedTodo">
     {{ todo.name }}
-    <button
+    <b-button
       type="button"
-      class="close"
-      aria-label="Close"
+      variant="success"
       @click="onToggle(todo)">
-      <span aria-hidden="true">Done</span>
-    </button>
+      Done
+    </b-button>
+    <b-button
+      type="button"
+      variant="warning"
+      @click="onToggle(todo)">
+      Edit
+    </b-button>
+    <b-button
+      type="button"
+      variant="danger"
+      @click="onRemove(todo.id)">
+      Remove
+    </b-button>
   </b-list-group-item>
 </template>
 
@@ -28,10 +39,14 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'UPDATE_TODO_STATUS'
+      'UPDATE_TODO_STATUS',
+      'REMOVE_TODO'
     ]),
     onToggle(task) {
       this.UPDATE_TODO_STATUS(task);
+    },
+    onRemove(id) {
+      this.REMOVE_TODO(id);
     }
   }
 }

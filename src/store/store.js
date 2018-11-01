@@ -15,6 +15,10 @@ export default new Vuex.Store({
     ADD_TODO: (state, todo) => {
       state.todoItems.push(todo);
     },
+    REMOVE_TODO: (state, todoId) => {
+      const todoIndex = state.todoItems.findIndex(item => item.id === todoId);
+      state.todoItems.splice(todoIndex, 1);
+    },
     UPDATE_TODO_STATUS: (state, task) => {
       const todoIndex = state.todoItems.findIndex(item => item.id === task.id);
       const foundTodo = state.todoItems.find(item => item.id === task.id);
