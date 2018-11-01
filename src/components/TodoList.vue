@@ -1,13 +1,13 @@
 <template>
-  <b-list-group v-if="isTodoItems">
+  <b-list-group v-if="todos.length">
     <common-item
-      v-for="task in tasks"
-      :key="task.id"
-      :task="task">
+      v-for="todo in todos"
+      :key="todo.id"
+      :task="todo">
     </common-item>
   </b-list-group>
   <div v-else>
-    <h3>Plase, add new todo!</h3>
+    <h3>Please, add new todo!</h3>
   </div>
 </template>
 
@@ -21,10 +21,9 @@ export default {
     CommonItem
   },
   computed: {
-    ...mapGetters({
-      tasks: 'getAllTodos',
-      isTodoItems: 'isEmptyTodos'
-    })
+    ...mapGetters([
+      'todos'
+    ])
   }
 }
 </script>

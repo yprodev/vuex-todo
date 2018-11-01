@@ -41,14 +41,9 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getAllTodos: state => {
-      return state.todoItems;
-    },
+    todos: state => state.todoItems,
     getCompletedTodos: state => {
       return state.todoItems.filter(todo => todo.completed);
-    },
-    isEmptyTodos: state => {
-      return state.todoItems.length !== 0;
     }
   }
 });
